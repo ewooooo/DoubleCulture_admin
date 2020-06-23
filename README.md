@@ -1,6 +1,6 @@
 # doublecultureadmin
 
-admin
+학교 밖 수원을 볼거야
 
 ## Getting Started
 
