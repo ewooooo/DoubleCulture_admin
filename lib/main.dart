@@ -1,9 +1,6 @@
 import 'package:doublecultureadmin/data/UserData.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:provider/provider.dart';
-
-import 'data/join_or_login.dart';
 import 'myHttp/AdapHttp.dart';
 import 'myHttp/model.dart';
 import 'screen/login.dart';
@@ -24,8 +21,8 @@ class MyApp extends StatelessWidget {
           canvasColor: const Color(0xFFaabdf5),
         ),
         //home:MyHomePage(),
-        home: ChangeNotifierProvider<JoinOrLogin>.value(
-            value: JoinOrLogin(), child: AuthPage()));
+        debugShowCheckedModeBanner: false, // Debug 배너 제거
+        home:  AuthPage());
   }
 }
 
