@@ -4,7 +4,6 @@ import 'package:doublecultureadmin/myHttp/AdapHttp.dart';
 import 'package:doublecultureadmin/myHttp/model.dart';
 import 'package:doublecultureadmin/data/UserData.dart';
 
-
 class AuthPage extends StatefulWidget {
   @override
   _AuthPageState createState() => _AuthPageState();
@@ -19,21 +18,21 @@ class _AuthPageState extends State<AuthPage> {
 
   Future<bool> _onBackPressed() {
     return showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: Text("exit?"),
-        actions: <Widget>[
-          FlatButton(
-            child: Text("ok"),
-            onPressed: () => Navigator.pop(context, true),
+          context: context,
+          builder: (context) => AlertDialog(
+            title: Text("exit?"),
+            actions: <Widget>[
+              FlatButton(
+                child: Text("ok"),
+                onPressed: () => Navigator.pop(context, true),
+              ),
+              FlatButton(
+                child: Text("cancel"),
+                onPressed: () => Navigator.pop(context, false),
+              ),
+            ],
           ),
-          FlatButton(
-            child: Text("cancel"),
-            onPressed: () => Navigator.pop(context, false),
-          ),
-        ],
-      ),
-    ) ??
+        ) ??
         false;
   }
 
@@ -53,9 +52,8 @@ class _AuthPageState extends State<AuthPage> {
 
             _inputForm(size),
 
-
             Padding(
-              padding: const EdgeInsets.fromLTRB(0,0,0,60.0),
+              padding: const EdgeInsets.fromLTRB(0, 0, 0, 60.0),
               child: SizedBox(
                 height: 50,
                 width: size.width * 0.6,
@@ -72,21 +70,21 @@ class _AuthPageState extends State<AuthPage> {
                       //formkey를 가져와서 currentstate를 확인하고 validate를 실행해서 이 안의 Text가 우리가 원하는 건지 확인해서 아니면 에러를 내보내고 맞으면
                       String id = _emailController.text;
                       String pw = _passwordController.text;
+                      userData = UserData(id,pw);
                       Token token = await server.getToken(id, pw);
                       if (token == null) {
                         printToast("아이디 or 비밀번호를 확인하세요.");
                       } else {
-                        userData.username = id;
-                        userData.password = pw;
                         _emailController.text = "";
                         _passwordController.text = "";
+                        printToast("로그인 되었습니다.");
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => MyHomePage()),
+                          MaterialPageRoute(builder: (context) => MyHomePage()),
                         );
                       }
                     }
+
                   },
                 ),
               ),
@@ -98,14 +96,14 @@ class _AuthPageState extends State<AuthPage> {
   }
 
   Widget get _logoImage => Expanded(
-    child: Padding(
-      padding: const EdgeInsets.only(top: 40, left: 24, right: 24),
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(50,50,50,0),
-        child: Image.asset('assets/KGU_Logo.png'),
-      ),
-    ),
-  );
+        child: Padding(
+          padding: const EdgeInsets.only(top: 40, left: 24, right: 24),
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(50, 50, 50, 0),
+            child: Image.asset('assets/KGU_Logo.png'),
+          ),
+        ),
+      );
 
   Widget _inputForm(Size size) {
     //Size를 사용하지 못하기에 여기에 던져줌
@@ -114,11 +112,11 @@ class _AuthPageState extends State<AuthPage> {
       child: Card(
         // new widget으로 감싸기 커서 놓고 Alt+enter
         shape:
-        RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.0)),
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.0)),
         elevation: 6,
         child: Padding(
           padding:
-          const EdgeInsets.only(left: 12.0, right: 16, top: 15, bottom: 32),
+              const EdgeInsets.only(left: 12.0, right: 16, top: 15, bottom: 32),
           child: Form(
               key: _formKey,
               child: Column(
