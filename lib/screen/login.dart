@@ -76,6 +76,8 @@ class _AuthPageState extends State<AuthPage> {
                       if (token == null) {
                         printToast("아이디 or 비밀번호를 확인하세요.");
                       } else {
+                        userData.username = id;
+                        userData.password = pw;
                         _emailController.text = "";
                         _passwordController.text = "";
                         Navigator.push(
