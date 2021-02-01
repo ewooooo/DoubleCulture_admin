@@ -23,7 +23,7 @@
 
 ---
 ## APP UI/UX
-<img src="README/login.jpg" width="150px" height="300px"></img> <img src="README/main.png" width="150px" height="300px">
+<img src="README/login.jpg" width="150px" height="300px"></img> <img src="README/main.PNG" width="150px" height="300px">
 
 
 ---
